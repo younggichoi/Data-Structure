@@ -9,7 +9,11 @@ private:
 	Node<Type>* tail;
 	int count;
 public:
-	// constructor
-	// accessor
-	// mutator
+	// default constructor
+	Node<Type>* front() const;
+	Node<Type>* back() const;
+	bool push_front(const Type&);
+	bool push_back(const Type&);
+	Type pop_front();
+	Type pop_back();
 };
