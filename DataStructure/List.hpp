@@ -86,7 +86,7 @@ bool List<Type>::push_back(const Type& t)
 template <typename Type>
 Type List<Type>::pop_front()
 {
-	assert(empty());
+	assert(!empty());
 	Type temp = head->value();
 	Node<Type>* temp_ptr = head->next();
 	delete head;
@@ -98,7 +98,7 @@ Type List<Type>::pop_front()
 template <typename Type>
 Type List<Type>::pop_back()
 {
-	assert(empty());
+	assert(!empty());
 	Type temp = tail->value();
 	Node<Type>* temp_ptr = head;
 	while (temp_ptr->next() != tail)
@@ -119,4 +119,5 @@ void List<Type>::print() const
 		std::cout << temp_ptr->value() << " --> ";
 		temp_ptr = temp_ptr->next();
 	}
+	std::cout << std::endl;
 }
