@@ -86,7 +86,15 @@ bool List<Type>::push_back(const Type& t)
 template <typename Type>
 Type List<Type>::pop_front()
 {
-	assert(!empty());
+	try
+	{
+		if (empty())
+			throw "Underflow!";
+	}
+	catch (const char* error_msg)
+	{
+		std::cout << error_msg << std::endl;
+	}
 	Type temp = head->value();
 	Node<Type>* temp_ptr = head->next();
 	delete head;
@@ -98,7 +106,15 @@ Type List<Type>::pop_front()
 template <typename Type>
 Type List<Type>::pop_back()
 {
-	assert(!empty());
+	try
+	{
+		if (empty())
+			throw "Underflow!";
+	}
+	catch (const char* error_msg)
+	{
+		std::cout << error_msg << std::endl;
+	}
 	Type temp = tail->value();
 	Node<Type>* temp_ptr = head;
 	while (temp_ptr->next() != tail)
