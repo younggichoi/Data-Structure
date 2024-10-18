@@ -5,13 +5,15 @@ int main()
 {
 	using namespace std;
 	List<int> list;
-	list.push_back(22);
-	list.push_front(4);
-	list.push_front(5);
-	list.push_front(6);
-	list.push_back(2);
-	list.push_back(0);
-	list.push_back(-3);
+	for (int i = 0; i < 10; i++)
+		list.push_back(i);
+	list.print();
+	for (int i = 44; i > 32; i--)
+		list.push_front(i);
+	list.print();
+	cout << list.pop_front() << endl;
+	list.print();
+	cout << list.pop_back() << endl;
 	list.print();
 	return 0;
 }
