@@ -20,6 +20,7 @@ public:
 	bool push_back(const Type&);
 	Type pop_front();
 	Type pop_back();
+	unsigned int size() const;
 	void print() const;
 };
 
@@ -124,6 +125,12 @@ Type List<Type>::pop_back()
 	tail->next() = nullptr;
 	count--;
 	return temp;
+}
+
+template <typename Type>
+unsigned int List<Type>::size() const
+{
+	return count;
 }
 
 template <typename Type>
