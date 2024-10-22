@@ -22,7 +22,7 @@ public:
 	AbstractTree<Type>* get_child(int n) const;
 	AbstractTree<Type>* attach(Type const& obj);
 
-	// void attach_subtree(AbstractTree*);
+	void attach_subtree(AbstractTree*);
 	// void detach_from_parent();
 
 	int size() const;
@@ -108,6 +108,11 @@ int AbstractTree<Type>::height() const
 	return tree_height;
 }
 
+template <typename Type>
+void AbstractTree<Type>::attach_subtree(AbstractTree* p)
+{
+	children.push_back(p);
+}
 // DFS function
 
 template <typename Type>
