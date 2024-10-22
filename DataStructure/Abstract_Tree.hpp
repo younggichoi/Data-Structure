@@ -1,5 +1,7 @@
 #pragma once
 #include "List.hpp"
+#include <iostream>
+#include <string>
 
 template <typename Type>
 class AbstractTree
@@ -20,8 +22,8 @@ public:
 	AbstractTree<Type>* get_child(int n) const;
 	AbstractTree<Type>* attach(Type const& obj);
 
-	void attach_subtree(AbstractTree*);
-	void detach_from_parent();
+	// void attach_subtree(AbstractTree*);
+	// void detach_from_parent();
 
 	int size() const;
 	int height() const;
@@ -69,10 +71,10 @@ AbstractTree<Type>* AbstractTree<Type>::get_child(int n) const
 	if (n < 0 || n >= get_degree())
 		return nullptr;
 	
-	Node<Type>* it = children.front();
+	auto it = children.front();
 	for (int i = 0; i < n; i++)
 		it = it->next();
-	return *it;
+	return it->value();
 }
 
 template <typename Type>
@@ -104,4 +106,20 @@ int AbstractTree<Type>::height() const
 	while (child->next())
 		tree_height = std::max(tree_height, 1 + (*child)->height());
 	return tree_height;
+}
+
+// DFS function
+
+template <typename Type>
+void print_dfs_tree(AbstractTree<Type>* tree, int depth = 0)
+{
+	std::cout << std::string(depth * 4, ' ') << "<" << tree->get_value() << ">" << std::endl;
+
+	for (int i = 0; i < tree->get_degree(); i++)
+	{
+		auto ctree = tree->get_child(i);
+		print_dfs_tree(ctree, depth + 1);
+	}
+
+	std::cout << std::string(depth*4, ' ') << "</" << tree->get_value() << ">" << std::endl;
 }
